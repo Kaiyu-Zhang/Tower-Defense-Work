@@ -1,0 +1,13 @@
+debug/main.o
+debug/mainwindow.o
+debug/Towerbase.o
+debug/Tower.o
+debug/enemy.o
+debug/checkpoints.o
+debug/function.o
+debug/bullet.o
+debug/qrc_image.o
+debug/moc_mainwindow.o
+debug/moc_Tower.o
+debug/moc_enemy.o
+debug/moc_bullet.o

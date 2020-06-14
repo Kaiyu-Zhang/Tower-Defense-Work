@@ -1,0 +1,13 @@
+release/main.o
+release/mainwindow.o
+release/Towerbase.o
+release/Tower.o
+release/enemy.o
+release/checkpoints.o
+release/function.o
+release/bullet.o
+release/qrc_image.o
+release/moc_mainwindow.o
+release/moc_Tower.o
+release/moc_enemy.o
+release/moc_bullet.o
