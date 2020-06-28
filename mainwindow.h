@@ -1,48 +1,83 @@
-#ifndef MAINWINDOW_H
+﻿#ifndef MAINWINDOW_H
 #define MAINWINDOW_H
-#include "Towerbase.h"
+
 #include <QMainWindow>
-#include"enemy.h"
-#include"Tower.h"
-#include"checkpoints.h"
-#include<QObject>
-#include "bullet.h"
+#include <QList>
+#include "towerposition.h"
+#include "tower.h"
+
 namespace Ui {
 class MainWindow;
 }
+
+class WayPoint;
+class Enemy;
+class QEnemyTypeA;
+class QEnemyTypeB;
+class QEnemyTypeC;
+class QEnemyTypeD;
+class Bullet;
+class MusicPlayer;
 
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = nullptr);
+    explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
-    void paintEvent(QPaintEvent *);
-    void mousePressEvent(QMouseEvent *event);
-    void loadTowerbase();
-    void setCheckPoints();
-    bool canBuy() const;
+
+    void getHpDamage(int damage = 1);
     void removedEnemy(Enemy *enemy);
-    void getHpDamage(int damage=1);
-    void removeEnemy(Enemy *enemy);
-
-
-    void loadEnemy();
     void removedBullet(Bullet *bullet);
     void addBullet(Bullet *bullet);
-    QList <Enemy*> getenemylist() const;
-public slots:
+    void awardGold(int gold);
+
+    MusicPlayer* musicPlayer() const;
+    QList<Enemy *> enemyList() const;
+
+protected:
+    void paintEvent(QPaintEvent *);
+    void mousePressEvent(QMouseEvent *);
+
+private slots:
     void updateMap();
+    void gameStart();
+
+    void mousePowerA();
+    void mousePowerB();
+    void mousePowerC();
+
 private:
-    Ui::MainWindow *ui;
-    QList <Towerbase> baselist;
-    QList <Tower*> towerlist;
-    QList <Enemy*> enemylist;
-    QList <Checkpoints*> CheckpointsList;
-    QList<Bullet *> bulletlist;
-    bool gameWin;
-    int waves;
+    void loadTowerPositions();
+    void addWayPoints();
+    bool loadWave();
+    bool canBuyTower() const;
+    void drawWave(QPainter *painter);
+    void drawHP(QPainter *painter);
+    void drawPlayerGold(QPainter *painter);
+    void doGameOver();
+    void preLoadWavesInfo();
+
+private:
+    Ui::MainWindow *		ui;
+    int						m_waves;
+    int						m_playerHp;
+    int						m_playrGold;
+    bool					m_gameEnded;
+    bool					m_gameState;
+    MusicPlayer *			m_MusicPlayer;
+    QList<QStringList>		m_waveslist;
+    QList<TowerPosition>	m_towerPositionsList;
+    QList<Tower *>			m_towersList;
+    QList<WayPoint *>		m_wayPointsListA;
+    QList<WayPoint *>		m_wayPointsListB;
+    QList<Enemy *>			m_enemyList;
+
+
+    QList<Bullet *>			m_bulletList;
+
+    int powerType;
 };
 
 #endif // MAINWINDOW_H
