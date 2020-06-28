@@ -1,24 +1,31 @@
-#ifndef TOWERBASE_H
+﻿#ifndef TOWERPOSITION_H
 #define TOWERBASE_H
-#include <QPoint>
-#include<QPixmap>
 
-class Towerbase
+#include <QPoint>
+#include <QSize>
+#include <QPixmap>
+
+class QPainter;
+
+class TowerBase
 {
 public:
-    Towerbase(QPoint pos,const QPixmap &image=QPixmap(":/image/towerbase.jpg"));
-    void setbase(bool state=true);  //设定基座
-    bool havetower() const;         //是否有塔
-    void setHaveTower();
-    const QPoint center() const;        //返回中心点
-    bool inrange(const QPoint &pos) const;      //是否位于塔座区域内
-    void show(QPainter *painter);
+    TowerBase(QPoint pos, const QPixmap &sprite = QPixmap(":/image/open_spot.png"));
 
-private:
-    QPoint position;
-    bool base_havetower;
-    QPixmap base_image;
-    static const QSize base_size;
+	void setHasTower(bool hasTower = true);
+	bool hasTower() const;
+    const QPoint pointTower() const;
+	const QPoint centerPos() const;
+	bool containPoint(const QPoint &pos) const;
+
+	void draw(QPainter *painter) const;
+
+public:
+	bool		m_hasTower;
+	QPoint		m_pos;
+	QPixmap		m_sprite;
+
+	static const QSize ms_fixedSize;
 };
 
 #endif // TOWERBASE_H

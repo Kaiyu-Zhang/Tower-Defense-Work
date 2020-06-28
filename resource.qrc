@@ -1,0 +1,24 @@
+<RCC>
+    <qresource prefix="/">
+        <file>image/Bg.png</file>
+        <file>image/bullet.png</file>
+        <file>image/Default.png</file>
+        <file>image/enemy.png</file>
+        <file>image/icon_gold.png</file>
+        <file>image/icon_HP.png</file>
+        <file>image/open_spot.png</file>
+        <file>image/tower.png</file>
+        <file>image/enemy1.png</file>
+        <file>image/enemy2.png</file>
+        <file>image/enemy3.png</file>
+        <file>image/enemy4.png</file>
+        <file>image/over.jpg</file>
+        <file>image/tower1.png</file>
+        <file>image/tower2.png</file>
+        <file>image/tower3.png</file>
+        <file>image/icon_red.png</file>
+        <file>image/victory.jpg</file>
+        <file>image/button.jpg</file>
+        <file>image/start.jpg</file>
+    </qresource>
+</RCC>
